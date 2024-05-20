@@ -1,0 +1,95 @@
+.DS_Store
+._*
+
+.idea
+.env
+.venv
+venv/
+local-only/
+*.kdev4
+env/
+
+*.sqlite
+
+# cache and builds files
+__pycache__
+.cache
+build/
+dist/
+instance/
+.webassets-cache
+.pytest_cache/
+.mypy_cache/
+.Python
+develop-eggs/
+downloads/
+lib/
+lib64/
+parts/
+sdist/
+var/
+
+# log files
+*.log
+*.egg-info*
+*.egg
+*.eggs
+eggs/
+.eggs/
+logfile.txt
+.installed.cfg
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Translations
+*.mo
+*.pot
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# node-waf configuration
+.lock-wscript
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
+node_modules
+# Debug log from npm
+npm-debug.log
+
+deploy/
+
+# Serverless
+.serverless
+.requirements.zip
+unzip_requirements.py
+*serverless.outputs*
+vendors/common
+
+# Secret
+secret*.json
+secret*.key
