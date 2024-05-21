@@ -19,7 +19,7 @@ services:
       - "4000:4000"
     develop:
       watch:
-        - path: ./src
+        - path: ./soplaya
           action: rebuild
     environment:
       - DB_URL=postgresql://postgres:postgres@db:5432/postgres
