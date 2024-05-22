@@ -7,4 +7,4 @@ with app.app_context():
     db.create_all()
 
 # noinspection PyUnresolvedReferences
-from soplaya.routes import test
+from soplaya.routes import importing
