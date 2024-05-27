@@ -2,7 +2,7 @@ from soplaya.context import db
 
 
 class Report(db.Model):
-    __tablename__ = "report"
+    __tablename__ = "reports"
 
     date = db.Column(db.Date, nullable=False, primary_key=True)
     restaurant = db.Column(db.String(80), nullable=False, primary_key=True)
@@ -13,7 +13,7 @@ class Report(db.Model):
 
     __table_args__ = (
         db.PrimaryKeyConstraint(
+            "date",
             "restaurant",
-            "planned_hours",
         ),
     )

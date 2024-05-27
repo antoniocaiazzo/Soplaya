@@ -74,8 +74,10 @@ class TaskManager:
         for c in range(max(1, task.get_max_consumers())):
             self.__run_with_context(task.consumer, run_context)
 
-    def get_task_result(self, task_id: str) -> TaskRunResult:
+    def get_task_result(self, task_id: str) -> TaskRunResult | None:
         run_context = self.__tasks.get(task_id)
+        if run_context is None:
+            return None
         result = TaskRunResult(run_context.task.id, run_context.check_all_futures_done(), run_context.errors)
         return result
 
