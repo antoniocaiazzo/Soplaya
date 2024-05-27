@@ -7,6 +7,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY ./soplaya .
+RUN python -c 'import secrets; print(f"SECRET_KEY = \"{secrets.token_hex()}\"")' > config.env
 
 EXPOSE 4000
 

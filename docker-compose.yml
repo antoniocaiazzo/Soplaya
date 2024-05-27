@@ -29,6 +29,7 @@ services:
           action: rebuild
     environment:
       - DB_URL=postgresql://postgres:postgres@db:5432/postgres
+      - SOPLAYA_CONFIG=config.env
     depends_on:
       db:
         condition: service_healthy

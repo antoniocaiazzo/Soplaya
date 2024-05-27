@@ -8,7 +8,7 @@ from soplaya.tasks.manager import TaskManager
 
 manager = TaskManager()
 
-import_data_location = "data/dataset.csv"
+import_data_location = app.config["IMPORT_DATA_LOCATION"]
 
 
 @app.route("/import", methods=["GET"])
