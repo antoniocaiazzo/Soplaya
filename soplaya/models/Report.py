@@ -1,3 +1,4 @@
+from marshmallow import Schema, fields as f, validate as v
 from sqlalchemy import Computed
 
 from soplaya.context import db
@@ -21,3 +22,14 @@ class Report(db.Model):
             "restaurant",
         ),
     )
+
+
+class ReportSchema(Schema):
+    date = f.Date(required=True)
+    restaurant = f.String(required=True)
+    planned_hours = f.Integer(required=True, validate=v.Range(min=0))
+    actual_hours = f.Integer(required=True, validate=v.Range(min=0))
+    delta_hours = f.Integer()
+    budget = f.Decimal(required=True, validate=v.Range(min=0))
+    sells = f.Decimal(required=True, validate=v.Range(min=0))
+    delta_budget = f.Decimal()

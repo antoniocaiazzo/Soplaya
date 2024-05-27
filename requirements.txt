@@ -1,6 +1,8 @@
-flask
+flask~=3.0.3
 psycopg2-binary
 Flask-SQLAlchemy
+marshmallow~=3.21.2
 black
-pytest
+pytest~=8.2.1
 more-itertools
+SQLAlchemy~=2.0.30
