@@ -46,3 +46,14 @@ def sort_by(model: Type[Model], select: Select, default: str = "") -> Select:
     order = asc if order_direction == "asc" else desc
 
     return select.order_by(order(field))
+
+
+def within_range(model: Type[Model], select: Select) -> Select:
+    for key, value in get_all_query_params().items():
+        if "_lte" in key:
+            field = get_model_field(model, key.replace("_lte", ""))
+            select = select.filter(field <= value)
+        elif "_gte" in key:
+            field = get_model_field(model, key.replace("_gte", ""))
+            select = select.filter(field >= value)
+    return select
