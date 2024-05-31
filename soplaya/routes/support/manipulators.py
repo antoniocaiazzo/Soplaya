@@ -16,7 +16,7 @@ def paginate(select: Select, serializer: Callable[[Iterable[Model]], list[dict[s
 
     pagination = db.paginate(select, page=page, per_page=per_page, max_per_page=pagination_max_per_page)
 
-    path_params = request.view_args
+    path_params = request.view_args or {}
     query_params = get_all_query_params(exclude=["page"])
     return make_response(
         jsonify(

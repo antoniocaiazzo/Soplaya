@@ -8,7 +8,7 @@ from soplaya.context import app, db
 from soplaya.models.Report import Report
 from soplaya.tasks.manager import Task
 
-default_chunk_size = 32
+default_chunk_size = app.config["IMPORT_CHUNK_SIZE"]
 
 
 class ImportFromCSVTask(Task):
@@ -22,10 +22,8 @@ class ImportFromCSVTask(Task):
         while not event_end.is_set():
             with open(self.__csv_path, newline="") as csvfile:
                 reader = csv.DictReader(csvfile)
-                i = 0
                 for chunk_rows in chunked(reader, self.__chunk_size):
                     pipeline.put(chunk_rows)
-                    i += 1
             event_end.set()
 
     def consumer(self, pipeline: queue.Queue, event_end: threading.Event):

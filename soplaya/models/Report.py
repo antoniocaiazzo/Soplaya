@@ -1,11 +1,21 @@
+from datetime import datetime
+
 from marshmallow import Schema, fields as f, validate as v
 from sqlalchemy import Computed
 
-from soplaya.context import db
+from soplaya.context import app, db
+
+date_format = app.config["IMPORT_DATE_FORMAT"]
 
 
 class Report(db.Model):
     __tablename__ = "reports"
+
+    def __init__(self, *args, **kwargs):
+        date = kwargs.get("date")
+        if isinstance(date, str):
+            kwargs["date"] = datetime.strptime(date, date_format).date()
+        super().__init__(*args, **kwargs)
 
     date = db.Column(db.Date, nullable=False, primary_key=True)
     restaurant = db.Column(db.String(80), nullable=False, primary_key=True)
@@ -25,7 +35,7 @@ class Report(db.Model):
 
 
 class ReportSchema(Schema):
-    date = f.Date(required=True)
+    date = f.Date(required=True, format=date_format)
     restaurant = f.String(required=True)
     planned_hours = f.Integer(required=True, validate=v.Range(min=0))
     actual_hours = f.Integer(required=True, validate=v.Range(min=0))
